@@ -1,0 +1,109 @@
+/* common */
+.absolute {
+	position: absolute;
+}
+.all-space {
+	.absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.block {
+	display: block;
+}
+.border-radius (@radius: 2px) {
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+	border-radius: @radius;
+}
+.box-shadow (@shadow: 0 1px 3px rgba(0,0,0,0.25)){
+	-webkit-box-shadow: @shadow;
+	-moz-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
+.box-sizing(@sizing: border-box) {
+	-moz-box-sizing: @sizing;
+	-webkit-box-sizing: @sizing;
+	box-sizing: @sizing;
+}
+.center-block {
+	.block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.fixed {
+	position: fixed;
+}
+.hide {
+	display: none;
+}
+.invisible {
+	visibility: hidden;
+}
+.opacity (@opacity: 0.5) {
+	zoom: 1;
+	-moz-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	opacity: @opacity;
+	@op: @opacity * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{op})";
+	filter: ~"alpha(opacity=@{op})";
+}
+.relative {
+	position: relative;
+}
+.show {
+	display: block;
+}
+.size (@width, @height) {
+	height: @height;
+	width: @width;
+}
+.size (@size){
+	height: @size;
+	width: @size;
+}
+.text-shadow (@shadow) {
+	-webkit-text-shadow: @shadow;
+	-moz-text-shadow: @shadow;
+	text-shadow: @shadow;
+}
+.to-left {
+	float: left;
+}
+.to-right {
+	float: right;
+}
+/* reset */
+.clearfix {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	&:after {
+		clear: both;
+	}
+}
+/* typo */
+.sans (@weight: normal, @size: 14px, @line: 20px) {
+	font-family: Arial, Tahoma, sans-serif;
+	font-size: @size;
+	font-weight: @weight;
+	line-height: @line;
+}
+.serif (@weight: normal, @size: 14px, @line: 20px) {
+	font-family: Georgia, Times, serif;
+	font-size: @size;
+	font-weight: @weight;
+	line-height: @line;
+}
+.mono (@weight: normal, @size: 14px, @line: 20px) {
+	font-family: Monaco, "Courier New", monospace;
+	font-size: @size;
+	font-weight: @weight;
+	line-height: @line;
+}
