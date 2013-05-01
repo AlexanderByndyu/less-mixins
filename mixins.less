@@ -9,6 +9,15 @@
 	bottom: 0;
 	left: 0;
 }
+.bg(@color) {
+	background: @color;
+}
+.bg(@color, @img){
+	background: @color @img;
+}
+.bg(pos, @left, @top) {
+	background-position: @left @top;
+}
 .block {
 	display: block;
 }
@@ -27,10 +36,50 @@
 	-webkit-box-sizing: @sizing;
 	box-sizing: @sizing;
 }
+.center(@width, @height) {
+	top: 50%;
+	left: 50%;
+	margin: @height * -0.5 0 0 @width * -0.5;
+}
+.center(ver, @height) {
+	top: 50%;
+	margin: @height * -0.5 0 0 0;
+}
+.center(hor, @width) {
+	left: 50%;
+	margin: 0 0 0 @width * -0.5;
+}
 .center-block {
 	.block;
 	margin-left: auto;
 	margin-right: auto;
+}
+.gradient(hor, @start, @end) {
+	background: @start;
+	background: -moz-linear-gradient(left, @start 0%, @end 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, @start), color-stop(100%, @end));
+	background: -webkit-linear-gradient(left, @start 0%, @end 100%);
+	background: -o-linear-gradient(left, @start 0%, @end 100%);
+	background: -ms-linear-gradient(left, @start 0%, @end 100%);
+	background: linear-gradient(to right, @start 0%, @end 100%);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient( startColorstr='%d', endColorstr='%d',GradientType=1)", @start, @end));
+}
+.gradient(ver, @start, @end) {
+	background: @start;
+	background: -moz-linear-gradient(top, @start 0%, @end 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start), color-stop(100%, @end));
+	background: -webkit-linear-gradient(top, @start 0%, @end 100%);
+	background: -o-linear-gradient(top, @start 0%, @end 100%);
+	background: -ms-linear-gradient(top, @start 0%, @end 100%);
+	background: linear-gradient(to bottom, @start 0%, @end 100%);
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient( startColorstr='%d', endColorstr='%d',GradientType=0)", @start, @end));
+}
+.filter(@filter: grayscale(100%)) {
+	-webkit-filter: @filter;
+	-moz-filter: @filter;
+	-ms-filter: @filter;
+	-o-filter: @filter;
+	filter: @filter;
 }
 .fixed {
 	position: fixed;
@@ -50,8 +99,34 @@
 	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{op})";
 	filter: ~"alpha(opacity=@{op})";
 }
+.pos(abs, @left: 0, @top: 0) {
+	.absolute;
+	top: @top;
+	left: @left;
+}
+.pos(fix, @left: 0, @top: 0) {
+	.fixed;
+	top: @top;
+	left: @left;
+}
+.pos(rel, @left: 0, @top: 0) {
+	.relative;
+	top: @top;
+	left: @left;
+}
 .relative {
 	position: relative;
+}
+.reset-block {
+	padding: 0;
+	margin: 0;
+	.box-sizing();
+}
+.rotate(@rotation) {
+	-webkit-transform: rotate(@rotation);
+	-moz-transform: rotate(@rotation);
+	-o-transform: rotate(@rotation);
+	transform: rotate(@rotation);
 }
 .show {
 	display: block;
@@ -64,6 +139,9 @@
 	height: @size;
 	width: @size;
 }
+.sprite(@step, @x, @y) {
+	.bg(pos, @y * @step, @x * @step);
+}
 .text-shadow (@shadow) {
 	-webkit-text-shadow: @shadow;
 	-moz-text-shadow: @shadow;
@@ -75,6 +153,12 @@
 .to-right {
 	float: right;
 }
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	transition: @transition;
+}
+
 /* reset */
 .clearfix {
 	*zoom: 1;
@@ -88,6 +172,7 @@
 		clear: both;
 	}
 }
+
 /* typo */
 .sans (@weight: normal, @size: 14px, @line: 20px) {
 	font-family: Arial, Tahoma, sans-serif;
