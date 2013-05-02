@@ -1,13 +1,10 @@
 /* common */
-.absolute {
+.all-space (@margin: 0px) {
 	position: absolute;
-}
-.all-space {
-	.absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	top: @margin;
+	right: @margin;
+	bottom: @margin;
+	left: @margin;
 }
 .bg (@color) {
 	background: @color;
@@ -117,9 +114,6 @@
 	-o-filter: @filter;
 	filter: @filter;
 }
-.fixed {
-	position: fixed;
-}
 .hide {
 	display: none;
 }
@@ -136,22 +130,19 @@
 	filter: ~"alpha(opacity=@{op})";
 }
 .pos (abs, @left: 0, @top: 0) {
-	.absolute;
+	position: absolute;
 	top: @top;
 	left: @left;
 }
 .pos (fix, @left: 0, @top: 0) {
-	.fixed;
+	position: fixed;
 	top: @top;
 	left: @left;
 }
 .pos (rel, @left: 0, @top: 0) {
-	.relative;
+	position: relative;
 	top: @top;
 	left: @left;
-}
-.relative {
-	position: relative;
 }
 .reset-block {
 	padding: 0;
