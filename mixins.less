@@ -18,6 +18,33 @@
 .block {
 	display: block;
 }
+.border (@color, @thick: 1px, @style: solid) {
+	border: @thick @style @color;
+}
+.border (top, @color, @thick: 1px, @style: solid) {
+	border-top: @thick @style @color;
+}
+.border (right, @color, @thick: 1px, @style: solid) {
+	border-right: @thick @style @color;
+}
+.border (bottom, @color, @thick: 1px, @style: solid) {
+	border-bottom: @thick @style @color;
+}
+.border (left, @color, @thick: 1px, @style: solid) {
+	border-left: @thick @style @color;
+}
+.border (@color, @hor: 1px, @ver: 1px, @style: solid) {
+	border-top: @hor @style @color;
+	border-right: @ver @style @color;
+	border-bottom: @hor @style @color;
+	border-left: @ver @style @color;
+}
+.border (@color, @top: 1px, @right: 1px, @bottom: 1px, @left: 1px, @style: solid) {
+	border-top: @top @style @color;
+	border-right: @right @style @color;
+	border-bottom: @bottom @style @color;
+	border-left: @left @style @color;
+}
 .border-radius (@radius: 2px) {
 	-moz-border-radius: @radius;
 	-webkit-border-radius: @radius;
