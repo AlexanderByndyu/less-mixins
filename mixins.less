@@ -9,13 +9,13 @@
 	bottom: 0;
 	left: 0;
 }
-.bg(@color) {
+.bg (@color) {
 	background: @color;
 }
-.bg(@color, @img){
+.bg (@color, @img){
 	background: @color @img;
 }
-.bg(pos, @left, @top) {
+.bg (pos, @left, @top) {
 	background-position: @left @top;
 }
 .block {
@@ -26,35 +26,71 @@
 	-webkit-border-radius: @radius;
 	border-radius: @radius;
 }
+.border-radius (top, @radius: 2px) {
+	.border-radius(top, left, @radius);
+	.border-radius(top, right, @radius);
+}
+.border-radius (bottom, @radius: 2px) {
+	.border-radius(bottom, left, @radius);
+	.border-radius(bottom, right, @radius);
+}
+.border-radius (left, @radius: 2px) {
+	.border-radius(top, left, @radius);
+	.border-radius(bottom, left, @radius);
+}
+.border-radius (right, @radius: 2px) {
+	.border-radius(top, right, @radius);
+	.border-radius(bottom, right, @radius);
+}
+.border-radius (top, left, @radius: 2px) {
+	-webkit-border-top-left-radius: @radius;
+	-moz-border-radius-topleft: @radius;
+	border-top-left-radius: @radius;
+}
+.border-radius (top, right, @radius: 2px) {
+	-webkit-border-top-right-radius: @radius;
+	-moz-border-radius-topright: @radius;
+	border-top-right-radius: @radius;
+}
+.border-radius (bottom, left, @radius: 2px) {
+	-webkit-border-bottom-left-radius: @radius;
+	-moz-border-radius-bottomleft: @radius;
+	border-bottom-left-radius: @radius;
+}
+.border-radius (bottom, right, @radius: 2px) {
+	-webkit-border-bottom-right-radius: @radius;
+	-moz-border-radius-bottomright: @radius;
+	border-bottom-right-radius: @radius;
+}
 .box-shadow (@shadow: 0 1px 3px rgba(0,0,0,0.25)){
 	-webkit-box-shadow: @shadow;
 	-moz-box-shadow: @shadow;
 	box-shadow: @shadow;
 }
-.box-sizing(@sizing: border-box) {
+.box-sizing (@sizing: border-box) {
 	-moz-box-sizing: @sizing;
 	-webkit-box-sizing: @sizing;
 	box-sizing: @sizing;
 }
-.center(@width, @height) {
+.center (@width, @height) {
 	top: 50%;
 	left: 50%;
-	margin: @height * -0.5 0 0 @width * -0.5;
+	margin: round(@height * -0.5) 0 0 round(@width * -0.5);
 }
-.center(ver, @height) {
+.center (ver, @height) {
 	top: 50%;
-	margin: @height * -0.5 0 0 0;
+	margin: round(@height * -0.5) 0 0 0;
 }
-.center(hor, @width) {
+.center (hor, @width) {
 	left: 50%;
-	margin: 0 0 0 @width * -0.5;
+	margin: 0 0 0 round(@width * -0.5);
 }
 .center-block {
 	.block;
 	margin-left: auto;
 	margin-right: auto;
 }
-.gradient(hor, @start, @end) {
+.gradient (hor, @start, @end) {
 	background: @start;
 	background: -moz-linear-gradient(left, @start 0%, @end 100%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%, @start), color-stop(100%, @end));
@@ -64,7 +100,7 @@
 	background: linear-gradient(to right, @start 0%, @end 100%);
 	filter: e(%("progid:DXImageTransform.Microsoft.gradient( startColorstr='%d', endColorstr='%d',GradientType=1)", @start, @end));
 }
-.gradient(ver, @start, @end) {
+.gradient (ver, @start, @end) {
 	background: @start;
 	background: -moz-linear-gradient(top, @start 0%, @end 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @start), color-stop(100%, @end));
@@ -74,7 +110,7 @@
 	background: linear-gradient(to bottom, @start 0%, @end 100%);
 	filter: e(%("progid:DXImageTransform.Microsoft.gradient( startColorstr='%d', endColorstr='%d',GradientType=0)", @start, @end));
 }
-.filter(@filter: grayscale(100%)) {
+.filter (@filter: grayscale(100%)) {
 	-webkit-filter: @filter;
 	-moz-filter: @filter;
 	-ms-filter: @filter;
@@ -99,17 +135,17 @@
 	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{op})";
 	filter: ~"alpha(opacity=@{op})";
 }
-.pos(abs, @left: 0, @top: 0) {
+.pos (abs, @left: 0, @top: 0) {
 	.absolute;
 	top: @top;
 	left: @left;
 }
-.pos(fix, @left: 0, @top: 0) {
+.pos (fix, @left: 0, @top: 0) {
 	.fixed;
 	top: @top;
 	left: @left;
 }
-.pos(rel, @left: 0, @top: 0) {
+.pos (rel, @left: 0, @top: 0) {
 	.relative;
 	top: @top;
 	left: @left;
@@ -122,7 +158,7 @@
 	margin: 0;
 	.box-sizing();
 }
-.rotate(@rotation) {
+.rotate (@rotation) {
 	-webkit-transform: rotate(@rotation);
 	-moz-transform: rotate(@rotation);
 	-o-transform: rotate(@rotation);
@@ -139,7 +175,7 @@
 	height: @size;
 	width: @size;
 }
-.sprite(@step, @x, @y) {
+.sprite (@step, @x, @y) {
 	.bg(pos, @y * @step, @x * @step);
 }
 .text-shadow (@shadow) {
@@ -153,7 +189,7 @@
 .to-right {
 	float: right;
 }
-.transition(@transition) {
+.transition (@transition) {
 	-webkit-transition: @transition;
 	-moz-transition: @transition;
 	transition: @transition;
